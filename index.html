@@ -6,653 +6,105 @@
     <title>Comércio, Terra e Sangue - Opath</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --color-primary: #8b5a2b;
-            --color-secondary: #c19a6b;
-            --color-accent: #d4b483;
-            --color-light: #f0e6d2;
-            --color-dark: #3a2c1e;
-            --color-text: #333333;
-            --color-background: #f8f5ef;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            background-color: var(--color-background);
-            color: var(--color-text);
-            font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
-            padding: 0;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header */
-        header {
-            background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary));
-            color: white;
-            padding: 15px 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-family: 'Marcellus SC', serif;
-            font-size: 2.2rem;
-            font-weight: bold;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav li {
-            margin-left: 25px;
-        }
-        
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        nav a:hover {
-            color: var(--color-light);
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://external-preview.redd.it/VzVvS051FLjWJNz5YFTmqJ--MQLyilQD3cPRr7R8574.jpg?auto=webp&s=bc7d394053a0731c7bcfbf48ee558bc4076f8c68') center/cover no-repeat;
-            padding: 80px 0;
-            text-align: center;
-            color: white;
-            position: relative;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .hero h1 {
-            font-family: 'Marcellus', serif;
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .map-indicator {
-            display: inline-block;
-            background-color: rgba(139, 90, 43, 0.8);
-            color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            margin-top: 20px;
-            font-size: 0.9rem;
-            animation: pulse 2s infinite;
-            cursor: pointer;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--color-primary);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .btn:hover {
-            background-color: var(--color-secondary);
-            transform: translateY(-2px);
-        }
-        
-        /* Modal para o mapa */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            overflow: auto;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .modal-content {
-            max-width: 90%;
-            max-height: 90%;
-            margin: auto;
-            display: block;
-            border: 10px solid var(--color-dark);
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-        
-        .modal-close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: white;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: color 0.3s;
-            z-index: 1001;
-        }
-        
-        .modal-close:hover {
-            color: var(--color-secondary);
-        }
-        
-        /* Seção do Mapa Antigo */
-        .map-section {
-            padding: 60px 0;
-            background-color: var(--color-light);
-            text-align: center;
-        }
-        
-        .map-title {
-            font-family: 'Marcellus', serif;
-            font-size: 2.2rem;
-            color: var(--color-primary);
-            margin-bottom: 30px;
-            text-align: center;
-            position: relative;
-            padding-bottom: 15px;
-        }
-        
-        .map-title:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background-color: var(--color-secondary);
-        }
-        
-        .map-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            border: 10px solid var(--color-dark);
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            position: relative;
-            cursor: pointer;
-        }
-        
-        .old-map {
-            width: 100%;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-        
-        .map-container:hover .old-map {
-            transform: scale(1.02);
-        }
-        
-        .map-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(58, 44, 30, 0.8);
-            color: white;
-            padding: 15px;
-            text-align: center;
-            font-style: italic;
-        }
-        
-        .map-description {
-            max-width: 800px;
-            margin: 30px auto 0;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        /* Main Content */
-        .main-content {
-            padding: 60px 0;
-        }
-        
-        .section {
-            margin-bottom: 60px;
-        }
-        
-        .section-title {
-            font-family: 'Marcellus', serif;
-            font-size: 2.2rem;
-            color: var(--color-primary);
-            margin-bottom: 30px;
-            text-align: center;
-            position: relative;
-            padding-bottom: 15px;
-        }
-        
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background-color: var(--color-secondary);
-        }
-        
-        .card {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            padding: 25px;
-            margin-bottom: 25px;
-            transition: transform 0.3s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .card-title {
-            font-family: 'Marcellus', serif;
-            font-size: 1.5rem;
-            color: var(--color-primary);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .card-title i {
-            margin-right: 10px;
-            color: var(--color-secondary);
-        }
-        
-        /* Two columns layout */
-        .two-columns {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-        
-        @media (max-width: 768px) {
-            .two-columns {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        /* Regions */
-        .region-card {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-        
-        .region-title {
-            font-family: 'Marcellus', serif;
-            font-size: 1.4rem;
-            color: var(--color-primary);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .region-title i {
-            margin-right: 10px;
-            color: var(--color-secondary);
-        }
-        
-        /* Character creation */
-        .character-section {
-            background-color: var(--color-light);
-            border-radius: 8px;
-            padding: 30px;
-            margin-top: 30px;
-        }
-        
-        .stats {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin: 20px 0;
-        }
-        
-        .stat-box {
-            background-color: var(--color-primary);
-            color: white;
-            padding: 12px 18px;
-            border-radius: 6px;
-            text-align: center;
-            flex: 1;
-            min-width: 150px;
-        }
-        
-        .highlight {
-            background-color: var(--color-accent);
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-weight: 500;
-            display: inline-block;
-            margin: 5px 0;
-        }
-        
-        /* Footer simplificado */
-        footer {
-            background-color: var(--color-dark);
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-        
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            nav ul {
-                margin-top: 15px;
-                justify-content: center;
-            }
-            
-            nav li {
-                margin: 0 10px;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .map-title {
-                font-size: 1.8rem;
-            }
-            
-            .modal-close {
-                top: 10px;
-                right: 20px;
-                font-size: 30px;
-            }
-            
-            .modal-content {
-                max-width: 95%;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-    <!-- Modal para o mapa -->
-    <div id="mapModal" class="modal">
-        <span class="modal-close">&times;</span>
-        <img class="modal-content" id="modalImg" src="https://brunomuller.net/wp-content/uploads/2021/01/Mapa-de-Opath-Terceira-Queda_Bruno-Muller-1536x1086.png" alt="Mapa Antigo de Opath">
-    </div>
-
     <header>
         <div class="container header-content">
             <div class="logo">Comércio, Terra e Sangue</div>
             <nav>
                 <ul>
-                    <li><a href="#introducao">Introdução</a></li>
-                    <li><a href="#carta">Carta</a></li>
-                    <li><a href="#opath">Opath</a></li>
-                    <li><a href="#personagem">Psersonagem</a></li>
-                    <li><a href="#mapa">Mapa Antigo</a></li>
+                    <li><a href="#inicio" onclick="carregarPagina('inicio')">Início</a></li>
+                    <li><a href="jogadores.html">Jogadores</a></li>
+                    <li><a href="#regras" onclick="carregarPagina('regras')">Regras</a></li>
+                    <li><a href="#cronologia" onclick="carregarPagina('cronologia')">Cronologia</a></li>
+                    <li><a href="#contato" onclick="carregarPagina('contato')">Contato</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-    
-    <section class="hero">
-        <div class="container hero-content">
-            <h1>Uma Aventura Épica em Opath</h1>
-            <p>Participe da construção da Estrada das Sete Chamas e escreva sua história no mundo de Opath</p>
-            <a href="#introducao" class="btn">Explorar o Mundo</a>
-            <div class="map-indicator" id="mapTrigger">
-                <i class="fas fa-map-marked-alt"></i> Clique para ver o mapa interativo
+
+    <!-- Página Inicial -->
+    <div id="inicio" class="conteudo-pagina">
+        <section class="hero">
+            <div class="container hero-content">
+                <h1>Uma Aventura Épica em Opath</h1>
+                <p>Participe da construção da Estrada das Sete Chamas e escreva sua história no mundo de Opath</p>
             </div>
-        </div>
-    </section>
-    
-    <section class="main-content container">
-        <!-- INTRODUÇÃO -->
-        <div id="introducao" class="section">
-            <h2 class="section-title">Introdução</h2>
-            <div class="card">
-                <h3 class="card-title"><i class="fas fa-landmark"></i> O Projeto da Rota Comercial</h3>
-                <p>Em Thur Thur, os oito senadores discutem como melhorar o comércio de itens em Opath. Alberich, o centro mais movimentado, sempre leva vantagem em suas vendas, mas a necessidade de pensar em todo o continente se tornou inevitável.</p>
-                <p>O destaque é o senador Marcus Valen — humani, senador de Alberich e porta-voz da Casa da Moeda. He argumenta que encurtar caminhos entre cidades traria prosperidade e equilíbrio para todos.</p>
-                <p>Após conquistar apoio popular com promessas de prosperidade and empregos, os demais senadores se sentiram pressionados a aprovar o projeto da criação da rota, chamada Estrada das Sete Chamas.</p>
-                <p>A Casa da Moeda financiou 70% dos custos e passou a contratar guildas para verificar rotas, mapear territórios e validar a segurança antes das obras começarem. Muitos aventureiros e guildas recusaram a tarefa, mesmo com boa recompensa, por não envolver "exploração gloriosa", e sim logística e política.</p>
-                <p>A guilda A Corte da Queda aceitou a empreitada e já mapeou parte de Tatsunari, mas encontrou obstáculos. Para isso, pediu a ajuda de aventureiros de fuera para vistoriarem vilas mais tranquilas e relatarem riscos.</p>
-            </div>
-        </div>
+        </section>
         
-        <!-- CARTA -->
-        <div id="carta" class="section">
-            <h2 class="section-title">Carta Convocatória</h2>
-            <div class="card">
-                <h3 class="card-title"><i class="fas fa-scroll"></i> Mensagem de Zikruu Marrok</h3>
-                <div style="background-color: #f9f5eb; padding: 20px; border-radius: 6px; border-left: 4px solid var(--color-secondary);">
-                    <p>"Caro(a) aventureiro(a),</p>
-                    <p>A Casa da Moeda investe em uma obra que mudará a história de Opath: uma rota que ligará cidades distantes e abrirá caminhos para a prosperidade. Mas para que ela se concretize, precisamos garantir a segurança dos primeiros passos.</p>
-                    <p>Sua missão será inspecionar a remota vila de Kagemori, situada nas gélidas encostas da Espinha de Vorax, em Tatsunari. Lá, deverá reunir-se com o ancião local, avaliar riscos e assegurar que nada atrapalhe a expansão da rota.</p>
-                    <p>Em troca, prometemos que além do ouro um Selo da Família Nobre de Alberich, chave para a fundação de sua própria guilda. Uma oportunidade rara de escrever seu nome nas crônicas deste mundo.</p>
-                    <p>Confio em sua determinação.</p>
-                    <p>— Zikruu Marrok, Líder da Corte da Queda"</p>
+        <section class="main-content container">
+            <!-- INTRODUÇÃO -->
+            <div class="section">
+                <h2 class="section-title">Introdução</h2>
+                <div class="card">
+                    <h3 class="card-title"><i class="fas fa-landmark"></i> O Projeto da Rota Comercial</h3>
+                    <p>Em Thur Thur, os oito senadores discutem como melhorar o comércio de itens em Opath. Alberich, o centro mais movimentado, sempre leva vantagem em suas vendas, mas a necessidade de pensar em todo o continente se tornou inevitável.</p>
+                    <p>O destaque é o senador Marcus Valen — humani, senador de Alberich e porta-voz da Casa da Moeda. He argumenta que encurtar caminhos entre cidades traria prosperidade e equilíbrio para todos.</p>
+                    <p>Após conquistar apoio popular com promessas de prosperidade and empregos, os demais senadores se sentiram pressionados a aprovar o projeto da criação da rota, chamada Estrada das Sete Chamas.</p>
+                    <p>A Casa da Moeda financiou 70% dos custos e passou a contratar guildas para verificar rotas, mapear territórios e validar a segurança antes das obras começarem. Muitos aventureiros e guildas recusaram a tarefa, mesmo com boa recompensa, por não envolver "exploração gloriosa", e sim logística e política.</p>
+                    <p>A guilda A Corte da Queda aceitou a empreitada e já mapeou parte de Tatsunari, mas encontrou obstáculos. Para isso, pediu a ajuda de aventureiros de fuera para vistoriarem vilas mais tranquilas e relatarem riscos.</p>
                 </div>
-            </div>
-        </div>
-        
-        <!-- OPATH -->
-        <div id="opath" class="section">
-            <h2 class="section-title">O Continente de Opath</h2>
-            <div class="card">
-                <h3 class="card-title"><i class="fas fa-globe-americas"></i> Um Continente em Movimento</h3>
-                <p>Com pouco mais de 850 quilômetros de lado a lado, Opath abriga uma impressionante diversidade de climas, povos e fenômenos sobrenaturais. Sua geografia é marcada por forças arcanas e cósmicas, tornando-o um lugar onde o natural e o místico coexistem em uma dança constante.</p>
-                <p>Mas este continente não é estático. As Quedas mudaram para sempre a paisagem de Opath: abriram o continente ao meio, trouxeram fauna e flora alienígena e, principalmente, determinaram os locais de construção de grandes portos e pontos de partida para jornadas de exploração.</p>
-                <p>Aqueles que se aventuram pelo mar enfrentam perigos imateriais e oníricos, frutos da Garoa — uma chuva mágica que forma nuvens de estranha energia arcana, separando Opath do resto do planeta. Nessas zonas, a magia se torna selvagem, e a realidade parece dobrar-se em delírio constante.</p>
-                <p>O grande continente pode ser dividido em oito regiões autônomas, cada uma com um tipo de governo próprio. Diferentes povos e criaturas já o habitaram em momentos distintos da história, mas hoje não há fronteiras culturais fixas — a miscigenação é a marca de sua população, especialmente nas grandes cidades.</p>
-                <p>No fim, Opath é um continente diverso, vibrante e cheio de contrastes. Cada região tem suas próprias histórias, tradições e conflitos, compondo um mosaico vivo de possibilidades para aventureiros.</p>
             </div>
             
-            <div class="two-columns">
-                <div>
-                    <div class="region-card">
-                        <h3 class="region-title"><i class="fas fa-mountain"></i> Tatsunari</h3>
-                        <p>Ao extremo sudeste, a Espinha de Vorax ergue-se como muralha de gelo e pedra, separando Tatsunari do restante do continente. Entre suas montanhas e neblinas vivem kishins, elfos do inverno, ogros e espíritos antigos.</p>
-                        <p>Sua capital, Sodori, é a última joia do antigo império: templos dourados, palácios de jade e ruas que brilham sob a neve. Mas sua ordem rígida e tradições severas escondem tensões que, em algum momento, podem transbordar.</p>
-                    </div>
-                    
-                    <div class="region-card">
-                        <h3 class="region-title"><i class="fas fa-snowflake"></i> Kagemori</h3>
-                        <p>Nas sombras da Espinha de Vorax, perdida entre ventos cortantes e neve eterna, repousa a vila de Kagemori. Fundada sobre um raro bolsão de calor subterrâneo, Kagemori sobrevive graças às fontes de vapor que aquecem suas casas de pedra e madeira escura.</p>
-                        <p>O ancião Taro Shizuka, um kishin sereno e respeitado, mantém a comunidade unida. Porém, rumores de estranhos movimentos nas montanhas e recentes dificuldades lançam uma névoa de incerteza sobre o futuro da vila.</p>
-                    </div>
-                </div>
-                
-                <div>
-                    <div class="region-card">
-                        <h3 class="region-title"><i class="fas fa-city"></i> Thur Thur</h3>
-                        <p>No centro do continente repousa Thur Thur, região vital onde as principais rotas comerciais se cruzam. É aqui que pulsa Alberich, a maior metrópole de Opath, lar de mais de dez milhões de almas.</p>
-                        <p>Alberich é o verdadeiro motor do continente — cultural, político e econômico. Mas também é um lugar onde intrigas, disputas comerciais e jogos de poder moldam os destinos de vilas inteiras.</p>
-                    </div>
-                    
-                    <div class="region-card">
-                        <h3 class="region-title"><i class="fas fa-coins"></i> Casa da Moeda</h3>
-                        <p>A Casa da Moeda de Alberich é a instituição financeira mais poderosa de Opath, controlando o fluxo de comércio e influenciando decisões políticas em todo o continente.</p>
-                        <p>Liderada pelo senador Marcus Valen, a Casa financiou 70% dos custos da Estrada das Sete Chamas.</p>
+            <!-- CARTA -->
+            <div class="section">
+                <h2 class="section-title">Carta Convocatória</h2>
+                <div class="card">
+                    <h3 class="card-title"><i class="fas fa-scroll"></i> Mensagem de Zikruu Marrok</h3>
+                    <div style="background-color: #f9f5eb; padding: 20px; border-radius: 6px; border-left: 4px solid var(--color-secondary);">
+                        <p>"Caro(a) aventureiro(a),</p>
+                        <p>A Casa da Moeda investe em uma obra que mudará a história de Opath: uma rota que ligará cidades distantes e abrirá caminhos para a prosperidade. Mas para que ela se concretize, precisamos garantir a segurança dos primeiros passos.</p>
+                        <p>Sua missão será inspecionar a remota vila de Kagemori, situada nas gélidas encostas da Espinha de Vorax, em Tatsunari. Lá, deverá reunir-se com o ancião local, avaliar riscos e assegurar que nada atrapalhe a expansão da rota.</p>
+                        <p>Em troca, prometemos que além do ouro um Selo da Família Nobre de Alberich, chave para a fundação de sua própria guilda. Uma oportunidade rara de escrever seu nome nas crônicas deste mundo.</p>
+                        <p>Confio em sua determinação.</p>
+                        <p>— Zikruu Marrok, Líder da Corte da Queda"</p>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <!-- CRIAÇÃO DE PERSONAGEM -->
-        <div id="personagem" class="section">
-            <h2 class="section-title">Criação de Personagem</h2>
-            <div class="character-section">
-                <div class="stats">
-                    <div class="stat-box">
-                        <div class="highlight">Nível inicial</div>
-                        <div>2</div>
+            
+            <!-- CRIAÇÃO DE PERSONAGEM -->
+            <div class="section">
+                <h2 class="section-title">Criação de Personagem</h2>
+                <div class="character-section">
+                    <div class="stats">
+                        <div class="stat-box">
+                            <div class="highlight">Nível inicial</div>
+                            <div>2</div>
+                        </div>
+                        
+                        <div class="stat-box">
+                            <div class="highlight">Recursos iniciais</div>
+                            <div>Itens iniciais + T$ 100</div>
+                        </div>
                     </div>
                     
-                    <div class="stat-box">
-                        <div class="highlight">Recursos iniciais</div>
-                        <div>Itens iniciais + T$ 100</div>
-                    </div>
-                </div>
-                
-                <p><span class="highlight">Vínculo com a Corte da Queda:</span> Todos devem ter algum laço com a guilda — pode ser alguém conhecido, um parente, ou até algo mais simples como "Fulano viu o que eu faço e pode me indicar".</p>
-                
-                <p><span class="highlight">Gancho narrativo:</span> Seu personagem precisa ter vontade de criar uma guilda ou participar de uma. Esse vínculo pode ser algo superficial — "ter uma guilda me traria mais ação" — ou algo mais profundo, como uma trama envolvendo um mestre aposentado de guilda que sumiu e você acredita que foi vítima de outra organização.</p>
-                
-                <p>No fim, defina o que move seu personagem por Opath. Você tem liberdade para escolher qualquer estado como local de origem, mas no momento inicial da campanha todos se encontram em Alberich, capital de Thur Thur.</p>
-            </div>
-        </div>
-    </section>
-    
-    <!-- SEÇÃO DO MAPA ANTIGO -->
-    <section id="mapa" class="map-section">
-        <div class="container">
-            <h2 class="map-title">Mapa Antigo de Opath</h2>
-            <div class="map-container" id="mapContainer">
-                <img src="https://brunomuller.net/wp-content/uploads/2021/01/Mapa-de-Opath-Terceira-Queda_Bruno-Muller-1536x1086.png" alt="Mapa Antigo de Opath" class="old-map">
-                <div class="map-overlay">
-                    Mapa original de Opath
+                    <p><span class="highlight">Vínculo com a Corte da Queda:</span> Todos devem ter algum laço com a guilda — pode ser alguém conhecido, um parente, ou até algo mais simples como "Fulano viu o que eu faço e pode me indicar".</p>
+                    
+                    <p><span class="highlight">Gancho narrativo:</span> Seu personagem precisa ter vontade de criar uma guilda ou participar de uma. Esse vínculo pode ser algo superficial — "ter uma guilda me traria mais ação" — ou algo mais profundo, como uma trama envolvendo um mestre aposentado de guilda que sumiu e você acredita que foi vítima de outra organização.</p>
+                    
+                    <p>No fim, defina o que move seu personagem por Opath. Você tem liberdade para escolher qualquer estado como local de origem, mas no momento inicial da campanha todos se encontram em Alberich, capital de Thur Thur.</p>
                 </div>
             </div>
-        </div>
-    </section>
-    
+        </section>
+    </div>
+
+
+
     <footer>
-        <div class="container">
-            <p>© 2023 - Comércio, Terra e Sangue | Uma Campanha Épica no Mundo de Opath</p>
+        <div class="container footer-content">
+            <div class="footer-logo">Comércio, Terra e Sangue</div>
+            <div class="footer-links">
+                <a href="#inicio" onclick="carregarPagina('inicio')">Início</a>
+                <a href="#jogadores" onclick="carregarPagina('jogadores')">Jogadores</a>
+                <a href="#regras" onclick="carregarPagina('regras')">Regras</a>
+                <a href="#cronologia" onclick="carregarPagina('cronologia')">Cronologia</a>
+                <a href="#contato" onclick="carregarPagina('contato')">Contato</a>
+            </div>
+            <p class="copyright">© 2023 - Comércio, Terra e Sangue | Uma Campanha Épica no Mundo de Opath</p>
         </div>
     </footer>
 
-    <script>
-        // Script para controlar o modal do mapa
-        document.addEventListener('DOMContentLoaded', function() {
-            var modal = document.getElementById("mapModal");
-            var mapTrigger = document.getElementById("mapTrigger");
-            var mapContainer = document.getElementById("mapContainer");
-            var closeBtn = document.getElementsByClassName("modal-close")[0];
-            
-            // Abrir modal ao clicar no indicador do mapa
-            mapTrigger.onclick = function() {
-                modal.style.display = "flex";
-                document.body.style.overflow = "hidden"; // Impede scroll na página principal
-            }
-            
-            // Abrir modal ao clicar no mapa na seção
-            mapContainer.onclick = function() {
-                modal.style.display = "flex";
-                document.body.style.overflow = "hidden"; // Impede scroll na página principal
-            }
-            
-            // Fechar modal ao clicar no X
-            closeBtn.onclick = function() {
-                modal.style.display = "none";
-                document.body.style.overflow = "auto"; // Restaura scroll
-            }
-            
-            // Fechar modal ao clicar fora da imagem
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                    document.body.style.overflow = "auto"; // Restaura scroll
-                }
-            }
-            
-            // Fechar modal com a tecla ESC
-            document.addEventListener('keydown', function(event) {
-                if (event.key === "Escape") {
-                    modal.style.display = "none";
-                    document.body.style.overflow = "auto"; // Restaura scroll
-                }
-            });
-            
-            // Script para controlar o zoom no mapa antigo na seção
-            const oldMap = document.querySelector('.old-map');
-            let isZoomed = false;
-            
-            mapContainer.addEventListener('click', function(e) {
-                // Impede que o clique no mapa abra o modal E faça zoom ao mesmo tempo
-                e.stopPropagation();
-                
-                if (isZoomed) {
-                    oldMap.style.transform = 'scale(1)';
-                    oldMap.style.cursor = 'zoom-in';
-                    mapContainer.style.overflow = 'hidden';
-                } else {
-                    oldMap.style.transform = 'scale(1.5)';
-                    oldMap.style.cursor = 'zoom-out';
-                    mapContainer.style.overflow = 'auto';
-                }
-                isZoomed = !isZoomed;
-            });
-            
-            // Adiciona navegação com teclado para o mapa antigo
-            document.addEventListener('keydown', function(event) {
-                if (event.key === "Escape" && isZoomed) {
-                    oldMap.style.transform = 'scale(1)';
-                    oldMap.style.cursor = 'zoom-in';
-                    mapContainer.style.overflow = 'hidden';
-                    isZoomed = false;
-                }
-            });
-        });
-    </script>
+    <script src="navegacao.js"></script>
 </body>
 </html>

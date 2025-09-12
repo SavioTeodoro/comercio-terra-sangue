@@ -432,7 +432,6 @@ nav a:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Hero Section */
 .hero {
     background: 
         linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
@@ -442,8 +441,11 @@ nav a:hover {
     text-align: center;
     color: white;
     position: relative;
+    min-height: 80vh; /* Ajuste para mostrar mais da imagem */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
 .hero-content {
     position: relative;
     z-index: 2;

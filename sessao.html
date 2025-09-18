@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sessão 0 - Comércio, Terra e Sangue</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilo.css">
+    <style>
+        /* Estilos específicos para a página Sessão 0 */
+        .expandable-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+        
+        .expandable-card .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .expandable-card .card-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        
+        .expandable-card.expanded .card-content {
+            max-height: 2000px;
+        }
+        
+        .expandable-card .expand-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .expandable-card.expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+        
+        .character-creation-form {
+            margin-top: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(139, 90, 43, 0.2);
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: 8px;
+            font-family: 'Marcellus', serif;
+        }
+        
+        .form-field {
+            min-height: 25px;
+            border-bottom: 1px dashed #ccc;
+            padding: 5px 0;
+        }
+        
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .section-subtitle {
+            font-family: 'Marcellus', serif;
+            font-size: 1.6rem;
+            color: var(--color-secondary);
+            margin: 30px 0 20px;
+            text-align: center;
+        }
+        
+        .highlight {
+            background-color: var(--color-light);
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+            border-left: 4px solid var(--color-secondary);
+        }
+        
+        @media (max-width: 768px) {
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-subtitle {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">Comércio, Terra e Sangue</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="jogadores.html">Jogadores</a></li>
+                    <li><a href="sessao0.html" class="active">Sessão</a></li>
+                    <li><a href="regras.html">Regras</a></li>
+                    <li><a href="cronologia.html">Cronologia</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Sessão 0: Criação de Personagem</h1>
+            <p>Prepare-se para embarcar em uma jornada épica no mundo de Opath</p>
+        </div>
+    </section>
+    
+    <section class="main-content container">
+        <!-- CARD EXPANSÍVEL - SESSÃO 0 -->
+        <div class="expandable-card card" onclick="toggleExpand(this)">
+            <div class="card-header">
+                <h2 class="card-title"><i class="fas fa-scroll"></i> 📜 Sessão 0: Criação de Personagem</h2>
+                <span class="expand-icon"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="card-content">
+                <!-- FICHA DE PERSONAGEM -->
+                <div class="section">
+                    <h3 class="section-subtitle">Ficha de Criação de Personagem</h3>
+                    <div class="character-creation-form">
+                        <div class="form-group">
+                            <label>Qual o nome:</label>
+                            <div class="form-field"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Legado (família, feitos, histórias que o marcaram):</label>
+                            <div class="form-field"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Onde veio (cidade, vila, cultura, ambiente):</label>
+                            <div class="form-field"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>O que te move (ambição, desejo, motivação):</label>
+                            <div class="form-field"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Que história deseja contar (seu arco pessoal dentro da campanha):</label>
+                            <div class="form-field"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Como você se sente no mundo (confiança, medo, raiva, esperança):</label>
+                            <div class="form-field"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD EXPANSÍVEL - GUILDA -->
+        <div class="expandable-card card" onclick="toggleExpand(this)">
+            <div class="card-header">
+                <h2 class="card-title"><i class="fas fa-users"></i> ⚔️ Guilda Corte da Queda</h2>
+                <span class="expand-icon"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="card-content">
+                <p>Uma guilda de médio porte, com sede em Tatsunari, conhecida por investigar "quedas" — ruínas, desastres, territórios esquecidos e locais que trazem perigo mas também segredos. Diferente de outras guildas que buscam apenas fama e tesouros, a Corte da Queda se define pela busca de conhecimento, estabilidade e descobertas úteis ao mundo.</p>
+
+                <!-- MEMBROS DA GUILDA -->
+                <h3 class="section-subtitle">🌟 Membros Principais</h3>
+                
+                <div class="two-columns">
+                    <!-- Zikruu Marrok -->
+                    <div class="card">
+                        <h4 class="card-title"><i class="fas fa-crown"></i> Zikruu Marrok – Tatsunoko</h4>
+                        <p><strong>Personalidade:</strong> Justo, meticuloso e confiável.</p>
+                        <p><strong>Função:</strong> Coordenador, mediador político e contato direto com nobres e senadores.</p>
+                        <p>Líder da guilda. Uma criatura reptiliana de estatura baixa, mas de presença firme. Conhecido por sua lealdade à Corte e seu senso de dever, Zikruu tem uma voz grave e paciente. É estrategista, raramente se deixa levar por emoções. Veste sempre um manto azul com o símbolo da guilda: uma ilha dourada caindo.</p>
+                    </div>
+
+                    <!-- Oriana -->
+                    <div class="card">
+                        <h4 class="card-title"><i class="fas fa-fist-raised"></i> Oriana – Kishin</h4>
+                        <p><strong>Personalidade:</strong> Intensa e Instável</p>
+                        <p><strong>Função:</strong> Músculo da guilda, protetora nos campos de exploração.</p>
+                        <p>Uma guerreira corpulenta, de temperamento explosivo. Oriana é a primeira a perder a paciência, mas carrega no cinto três canecas metálicas, pois beber cerveja é sua forma de voltar à calma.</p>
+                    </div>
+
+                    <!-- Kire -->
+                    <div class="card">
+                        <h4 class="card-title"><i class="fas fa-coins"></i> Kire – Elfe</h4>
+                        <p><strong>Personalidade:</strong> Ganancioso, charmoso e pragmático.</p>
+                        <p><strong>Função:</strong> Diplomata e tesoureiro da guilda.</p>
+                        <p>Um elfe de cabelos claros e olhos calculistas. Para Kire, beleza e valor estão no ouro. Elu é quem negocia contratos, compras e vendas de suprimentos, sempre barganhando para que a guilda saia lucrando.</p>
+                    </div>
+
+                    <!-- Garrick -->
+                    <div class="card">
+                        <h4 class="card-title"><i class="fas fa-theater-masks"></i> Garrick – Walshie</h4>
+                        <p><strong>Personalidade:</strong> Bem-humorado, confiável, um pouco trapaceiro em jogos de azar.</p>
+                        <p><strong>Função:</strong> Porta-voz popular da guilda.</p>
+                        <p>Dono de um sorriso fácil e um humor afiado. Garrick é o carisma vivo da guilda: brinca nas horas certas, conta histórias e anima os aliados nas piores situações.</p>
+                    </div>
+
+                    <!-- Lyra Sombracanto -->
+                    <div class="card">
+                        <h4 class="card-title"><i class="fas fa-mask"></i> Lyra Sombracanto – Humana</h4>
+                        <p><strong>Personalidade:</strong> Fria, inteligente.</p>
+                        <p><strong>Função:</strong> Espiã, rastreadora e exploradora de ambientes arriscados.</p>
+                        <p>Sagaz e manipuladora, prefere agir nas sombras. Ardilosa, acredita que a informação vale mais que a força.</p>
+                    </div>
+
+                    <!-- Thorne -->
+                    <div class="card">
+                        <h4 class="card-title"><i class="fas fa-flask"></i> Thorne – Anuro</h4>
+                        <p><strong>Personalidade:</strong> Calado, calculista, um pouco excêntrico.</p>
+                        <p><strong>Função:</strong> Alquimista e Estrategista de campo.</p>
+                        <p>Um ser anfíbio, de pele verde-escura e olhos atentos. O mais inteligente do grupo, Thorne domina alquimia e cria poções a partir de seu próprio veneno. É o tipo que pensa três passos à frente.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD EXPANSÍVEL - CONTEXTO -->
+        <div class="expandable-card card" onclick="toggleExpand(this)">
+            <div class="card-header">
+                <h2 class="card-title"><i class="fas fa-road"></i> 🏛️ Contexto: O Projeto da Rota Comercial</h2>
+                <span class="expand-icon"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="card-content">
+                <p>Em Thur Thur, os oito senadores de Opath discutem o futuro do comércio. Alberich, o centro mercantil mais rico, pressiona os demais com a proposta do senador Marcus Valen, que defende a criação da Estrada das Sete Chamas — uma rota que encurtará caminhos entre cidades, trazendo prosperidade e empregos.</p>
+                
+                <p>A Casa da Moeda de Alberich financia a maior parte do projeto e contrata guildas para vistoriar territórios, garantindo segurança antes das obras. Enquanto muitos recusam por achar "sem glória", a Corte da Queda aceita a tarefa.</p>
+                
+                <div class="highlight">
+                    <p>Sua missão será inspecionar a remota vila de Kagemori, situada nas gélidas encostas da Espinha de Vorax, em Tatsunari. Lá, deverá reunir-se com o ancião local, avaliar riscos e assegurar que nada atrapalhe a expansão da rota.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">Comércio, Terra e Sangue</div>
+            <div class="footer-links">
+                <a href="index.html">Início</a>
+                <a href="jogadores.html">Jogadores</a>
+                <a href="sessao0.html">Sessão 0</a>
+                <a href="regras.html">Regras</a>
+                <a href="cronologia.html">Cronologia</a>
+            </div>
+            <p class="copyright">© 2023 - Comércio, Terra e Sangue | Uma Campanha Épica no Mundo de Opath</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleExpand(card) {
+            card.classList.toggle('expanded');
+        }
+        
+        // Expandir automaticamente ao carregar a página
+        window.addEventListener('load', function() {
+            const cards = document.querySelectorAll('.expandable-card');
+            cards.forEach(card => {
+                card.classList.add('expanded');
+            });
+        });
+    </script>
+</body>
+</html>

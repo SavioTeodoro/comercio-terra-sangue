@@ -309,4 +309,76 @@ footer {
     .section-title {
         font-size: 1.6rem;
     }
+    /* Estilos adicionais para a página Sessão 0 */
+
+/* Formulário de criação de personagem */
+.character-creation-form {
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(139, 90, 43, 0.2);
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+    font-family: 'Marcellus', serif;
+}
+
+.form-field {
+    min-height: 25px;
+    border-bottom: 1px dashed #ccc;
+    padding: 5px 0;
+}
+
+/* Subtítulo de seção */
+.section-subtitle {
+    font-family: 'Marcellus', serif;
+    font-size: 1.6rem;
+    color: var(--color-secondary);
+    margin: 30px 0 20px;
+    text-align: center;
+}
+
+/* Layout de duas colunas para os membros */
+.two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-top: 25px;
+}
+
+/* Cartões de membros */
+.two-columns .card {
+    margin-bottom: 0;
+}
+
+.two-columns .card-title {
+    font-size: 1.3rem;
+}
+
+/* Destaque no contexto */
+.highlight {
+    background-color: var(--color-light);
+    padding: 20px;
+    border-radius: 6px;
+    margin: 20px 0;
+    border-left: 4px solid var(--color-secondary);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .two-columns {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-subtitle {
+        font-size: 1.4rem;
+    }
+}
 }

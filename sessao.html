@@ -28,7 +28,7 @@
         }
         
         .expandable-card.expanded .card-content {
-            max-height: 2000px;
+            max-height: 3000px;
         }
         
         .expandable-card .expand-icon {
@@ -45,22 +45,43 @@
         
         .form-group {
             margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(139, 90, 43, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            background-color: rgba(240, 230, 210, 0.3);
+            border-left: 4px solid var(--color-secondary);
         }
         
         .form-group label {
             display: block;
             font-weight: 600;
             color: var(--color-primary);
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             font-family: 'Marcellus', serif;
+            font-size: 1.1rem;
         }
         
         .form-field {
-            min-height: 25px;
-            border-bottom: 1px dashed #ccc;
-            padding: 5px 0;
+            width: 100%;
+            min-height: 40px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: white;
+            font-family: 'Montserrat', sans-serif;
+            resize: vertical;
+        }
+        
+        .form-field:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 2px rgba(139, 90, 43, 0.2);
+        }
+        
+        .form-hint {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 5px;
+            font-style: italic;
         }
         
         .two-columns {
@@ -86,6 +107,26 @@
             border-left: 4px solid var(--color-secondary);
         }
         
+        .print-btn {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 12px 20px;
+            background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Marcellus', serif;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .print-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
         @media (max-width: 768px) {
             .two-columns {
                 grid-template-columns: 1fr;
@@ -93,6 +134,29 @@
             
             .section-subtitle {
                 font-size: 1.4rem;
+            }
+            
+            .form-group {
+                padding: 12px;
+            }
+        }
+        
+        @media print {
+            .expandable-card .card-header {
+                cursor: default;
+            }
+            
+            .expand-icon {
+                display: none;
+            }
+            
+            .expandable-card .card-content {
+                max-height: none;
+                overflow: visible;
+            }
+            
+            .print-btn {
+                display: none;
             }
         }
     </style>
@@ -105,7 +169,7 @@
                 <ul>
                     <li><a href="index.html">Início</a></li>
                     <li><a href="jogadores.html">Jogadores</a></li>
-                    <li><a href="sessao0.html" class="active">Sessão</a></li>
+                    <li><a href="sessao0.html" class="active">Sessão 0</a></li>
                     <li><a href="regras.html">Regras</a></li>
                     <li><a href="cronologia.html">Cronologia</a></li>
                 </ul>
@@ -125,44 +189,48 @@
         <!-- CARD EXPANSÍVEL - SESSÃO 0 -->
         <div class="expandable-card card" onclick="toggleExpand(this)">
             <div class="card-header">
-                <h2 class="card-title"><i class="fas fa-scroll"></i> 📜 Sessão 0: Criação de Personagem</h2>
+                <h2 class="card-title"><i class="fas fa-scroll"></i> 📜 Questionário de Criação de Personagem</h2>
                 <span class="expand-icon"><i class="fas fa-chevron-down"></i></span>
             </div>
             <div class="card-content">
                 <!-- FICHA DE PERSONAGEM -->
                 <div class="section">
-                    <h3 class="section-subtitle">Ficha de Criação de Personagem</h3>
+                    <h3 class="section-subtitle">Construa a História do Seu Personagem</h3>
+                    <p>Responda às perguntas abaixo para dar vida ao seu personagem no mundo de Opath. Estas respostas ajudarão a guiar sua jornada e criar conexões com a campanha.</p>
+                    
                     <div class="character-creation-form">
                         <div class="form-group">
-                            <label>Qual o nome:</label>
-                            <div class="form-field"></div>
+                            <label>1. Qual o nome do personagem?</label>
+
+                            <div class="form-hint">Considere a origem e cultura do personagem ao escolher o nome.</div>
                         </div>
                         
                         <div class="form-group">
-                            <label>Legado (família, feitos, histórias que o marcaram):</label>
-                            <div class="form-field"></div>
+                            <label>2. Legado – Seu personagem possui família conhecida, feitos marcantes, ou histórias que o acompanham?</label>
+                            <div class="form-hint">Estas histórias podem se tornar importantes durante a campanha.</div>
                         </div>
                         
                         <div class="form-group">
-                            <label>Onde veio (cidade, vila, cultura, ambiente):</label>
-                            <div class="form-field"></div>
+                            <label>3. Onde veio – De qual cidade ou vila ele surgiu? O que gostaria de desenvolver desse lugar na campanha?</label>
+                            <div class="form-hint">Pense em como este lugar moldou quem seu personagem é hoje.</div>
                         </div>
                         
                         <div class="form-group">
-                            <label>O que te move (ambição, desejo, motivação):</label>
-                            <div class="form-field"></div>
+                            <label>4. O que te move – Qual é sua ambição, desejo ou motivação principal?</label>
+                            <div class="form-hint">Esta motivação guiará as decisões do seu personagem ao longo da aventura.</div>
                         </div>
                         
                         <div class="form-group">
-                            <label>Que história deseja contar (seu arco pessoal dentro da campanha):</label>
-                            <div class="form-field"></div>
+                            <label>5. Que história deseja contar – Como jogador, que história pensa em ter?</label>
+                            <div class="form-hint">Pense no desenvolvimento que gostaria de ver no seu personagem.</div>
                         </div>
                         
                         <div class="form-group">
-                            <label>Como você se sente no mundo (confiança, medo, raiva, esperança):</label>
-                            <div class="form-field"></div>
+                            <label>6. Melancolia do personagem com base no legado.</label>
+                            <div class="form-hint">Todo herói tem suas cicatrizes. O que ainda dói no seu personagem?</div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -174,7 +242,7 @@
                 <span class="expand-icon"><i class="fas fa-chevron-down"></i></span>
             </div>
             <div class="card-content">
-                <p>Uma guilda de médio porte, com sede em Tatsunari, conhecida por investigar "quedas" — ruínas, desastres, territórios esquecidos e locais que trazem perigo mas também segredos. Diferente de outras guildas que buscam apenas fama e tesouros, a Corte da Queda se define pela busca de conhecimento, estabilidade e descobertas úteis ao mundo.</p>
+                <p>Uma guilda de médio porte, com sede em Tatsunari, conhecida por investigar "quedas" — ruínas, desastres, territórios esquecidos e locais que trazem perigo mas também segredos. Diferente de outras guildas que buscam apenas fama e tesouros, a Corte da Queda se define pela busca de conhecimento, stabilidade e descobertas úteis ao mundo.</p>
 
                 <!-- MEMBROS DA GUILDA -->
                 <h3 class="section-subtitle">🌟 Membros Principais</h3>
@@ -185,15 +253,15 @@
                         <h4 class="card-title"><i class="fas fa-crown"></i> Zikruu Marrok – Tatsunoko</h4>
                         <p><strong>Personalidade:</strong> Justo, meticuloso e confiável.</p>
                         <p><strong>Função:</strong> Coordenador, mediador político e contato direto com nobres e senadores.</p>
-                        <p>Líder da guilda. Uma criatura reptiliana de estatura baixa, mas de presença firme. Conhecido por sua lealdade à Corte e seu senso de dever, Zikruu tem uma voz grave e paciente. É estrategista, raramente se deixa levar por emoções. Veste sempre um manto azul com o símbolo da guilda: uma ilha dourada caindo.</p>
+                        <p>Líder da guilda. Uma criatura reptiliana de estatura baixa, mas de presença firme. Conhecido por sua lealdade à Corte e seu senso de dever, Zikruu tem uma voz grave e paciente. É estrategista, raramente se deixa levar por emoções. Veste sempre um manto azul com o símbolo da guilda: uma chama dourada caindo.</p>
                     </div>
 
                     <!-- Oriana -->
                     <div class="card">
                         <h4 class="card-title"><i class="fas fa-fist-raised"></i> Oriana – Kishin</h4>
-                        <p><strong>Personalidade:</strong> Intensa e Instável</p>
+                        <p><strong>Personalidade:</strong> Intensa, instável, mas nunca falha quando está de guarda.</p>
                         <p><strong>Função:</strong> Músculo da guilda, protetora nos campos de exploração.</p>
-                        <p>Uma guerreira corpulenta, de temperamento explosivo. Oriana é a primeira a perder a paciência, mas carrega no cinto três canecas metálicas, pois beber cerveja é sua forma de voltar à calma.</p>
+                        <p>Uma guerreira corpulenta, de temperamento explosivo. Oriana é a primeira a perder a paciência, mas carrega no cinto três canecas metálicas, pois beber cerveja é sua forma de voltar à calma. Apesar do mau humor, é leal a seus companheiros.</p>
                     </div>
 
                     <!-- Kire -->
@@ -201,30 +269,30 @@
                         <h4 class="card-title"><i class="fas fa-coins"></i> Kire – Elfe</h4>
                         <p><strong>Personalidade:</strong> Ganancioso, charmoso e pragmático.</p>
                         <p><strong>Função:</strong> Diplomata e tesoureiro da guilda.</p>
-                        <p>Um elfe de cabelos claros e olhos calculistas. Para Kire, beleza e valor estão no ouro. Elu é quem negocia contratos, compras e vendas de suprimentos, sempre barganhando para que a guilda saia lucrando.</p>
+                        <p>Um elfo de cabelos claros e olhos calculistas. Para Kire, beleza e valor estão no ouro. Ele é quem negocia contratos, compras e vendas de suprimentos, sempre barganhando para que a guilda saia lucrando.</p>
                     </div>
 
                     <!-- Garrick -->
                     <div class="card">
                         <h4 class="card-title"><i class="fas fa-theater-masks"></i> Garrick – Walshie</h4>
                         <p><strong>Personalidade:</strong> Bem-humorado, confiável, um pouco trapaceiro em jogos de azar.</p>
-                        <p><strong>Função:</strong> Porta-voz popular da guilda.</p>
-                        <p>Dono de um sorriso fácil e um humor afiado. Garrick é o carisma vivo da guilda: brinca nas horas certas, conta histórias e anima os aliados nas piores situações.</p>
+                        <p><strong>Função:</strong> Porta-voz popular da guilda, distrai e motiva.</p>
+                        <p>Um aventureiro humanoide de origem mestiça (Walshie), dono de um sorriso fácil e um humor afiado. Garrick é o carisma vivo da guilda: brinca nas horas certas, conta histórias e anima os aliados nas piores situações.</p>
                     </div>
 
                     <!-- Lyra Sombracanto -->
                     <div class="card">
                         <h4 class="card-title"><i class="fas fa-mask"></i> Lyra Sombracanto – Humana</h4>
-                        <p><strong>Personalidade:</strong> Fria, inteligente.</p>
+                        <p><strong>Personalidade:</strong> Misteriosa, fria, inteligente.</p>
                         <p><strong>Função:</strong> Espiã, rastreadora e exploradora de ambientes arriscados.</p>
-                        <p>Sagaz e manipuladora, prefere agir nas sombras. Ardilosa, acredita que a informação vale mais que a força.</p>
+                        <p>Uma ladina sagaz e manipuladora, prefere agir nas sombras. Ardilosa, acredita que a informação vale mais que a força. Tem uma rede de contatos obscura e coleciona segredos, inclusive de seus companheiros.</p>
                     </div>
 
                     <!-- Thorne -->
                     <div class="card">
                         <h4 class="card-title"><i class="fas fa-flask"></i> Thorne – Anuro</h4>
                         <p><strong>Personalidade:</strong> Calado, calculista, um pouco excêntrico.</p>
-                        <p><strong>Função:</strong> Alquimista e Estrategista de campo.</p>
+                        <p><strong>Função:</strong> Alquimista e estrategista de campo.</p>
                         <p>Um ser anfíbio, de pele verde-escura e olhos atentos. O mais inteligente do grupo, Thorne domina alquimia e cria poções a partir de seu próprio veneno. É o tipo que pensa três passos à frente.</p>
                     </div>
                 </div>
@@ -273,6 +341,27 @@
             const cards = document.querySelectorAll('.expandable-card');
             cards.forEach(card => {
                 card.classList.add('expanded');
+            });
+        });
+        
+        // Salvar respostas localmente
+        document.addEventListener('DOMContentLoaded', function() {
+            const formFields = document.querySelectorAll('.form-field');
+            
+            // Carregar respostas salvas
+            formFields.forEach(field => {
+                const savedValue = localStorage.getItem(field.parentNode.querySelector('label').textContent);
+                if (savedValue) {
+                    field.value = savedValue;
+                }
+            });
+            
+            // Salvar respostas ao digitar
+            formFields.forEach(field => {
+                field.addEventListener('input', function() {
+                    const label = this.parentNode.querySelector('label').textContent;
+                    localStorage.setItem(label, this.value);
+                });
             });
         });
     </script>

@@ -7,6 +7,98 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="estilojoga.css">
+    <style>
+        /* Estilos específicos para a barra de HP */
+        .hp-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .hp-label {
+            font-weight: bold;
+            margin-right: 8px;
+            color: var(--color-primary);
+            min-width: 30px;
+        }
+        
+        .hp-bar {
+            flex-grow: 1;
+            height: 16px;
+            background-color: #333;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            border: 2px solid #000;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hp-fill {
+            height: 100%;
+            background: linear-gradient(to right, #ff0000, #ff5500);
+            border-radius: 6px;
+            transition: width 0.5s ease;
+            position: relative;
+        }
+        
+        .hp-fill:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 50%);
+            pointer-events: none;
+        }
+        
+        .hp-value {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-weight: bold;
+            font-size: 10px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        }
+        
+        /* Ajustes no layout dos cards */
+        .players-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .players-grid-bottom {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 25px;
+            max-width: 66.66%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        @media (max-width: 1024px) {
+            .players-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .players-grid-bottom {
+                grid-template-columns: 1fr;
+                max-width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .players-grid,
+            .players-grid-bottom {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -32,15 +124,25 @@
             </div>
         </section>
 
+        <!-- Primeira linha com 3 jogadores -->
         <div class="players-grid">
-            <!-- Card 1 - Com imagem existente -->
+            <!-- Card 1 - Elarion Ryuzen -->
             <div class="player-card">
                 <img src="arister.jfif" alt="Elarion Ryuzen" class="player-avatar">
                 <h2 class="player-name">Elarion Ryuzen</h2>
                 <div class="player-class">O Dragão Espiritual</div>
 
                 <div class="player-description">
+                    <div class="hp-container">
+                        <span class="hp-label">HP:</span>
+                        <div class="hp-bar">
+                            <div class="hp-fill" style="width: 100%;">
+                                <span class="hp-value">15/15</span>
+                            </div>
+                        </div>
+                    </div>
                     <p><strong>Legado:</strong> Sanguir</p>
+
                     <p><strong>Classe:</strong> Ocultista</p>
                     <p><strong>Trilha:</strong> Guerreiro Koi</p>
                 </div>
@@ -55,14 +157,23 @@
                 </div>
             </div>
 
-            <!-- Card 2 - Com imagem existente -->
+            <!-- Card 2 - Ashfang -->
             <div class="player-card">
                 <img src="giovane.jpeg" alt="Ashfang" class="player-avatar">
                 <h2 class="player-name">Ashfang</h2>
                 <div class="player-class">O Brigão</div>
 
                 <div class="player-description">
+                    <div class="hp-container">
+                        <span class="hp-label">HP:</span>
+                        <div class="hp-bar">
+                            <div class="hp-fill" style="width: 100%;">
+                                <span class="hp-value">17/17</span>
+                            </div>
+                        </div>
+                    </div>
                     <p><strong>Legado:</strong> Retornado (Draco)</p>
+
                     <p><strong>Classe:</strong> Combatente</p>
                     <p><strong>Trilha:</strong> Herdeiro Ancestral</p>
                 </div>
@@ -77,36 +188,57 @@
                 </div>
             </div>
 
-            <!-- Card 3 - Novo card com placeholder -->
+            <!-- Card 3 - Finian Finwick -->
             <div class="player-card">
-                <img src="https://placehold.co/150x150/8b5a2b/ffffff?text=Mystra" alt="Mystra" class="player-avatar">
-                <h2 class="player-name">Mystra</h2>
-                <div class="player-class">A Feiticeira Arcana</div>
+                <img src="gustavo.jfif" alt="Finian" class="player-avatar">
+                <h2 class="player-name">Finian Finwick</h2>
+                <div class="player-class">O Militar Toptero</div>
 
                 <div class="player-description">
-                    <p><strong>Legado:</strong> Humana</p>
-                    <p><strong>Classe:</strong> Arcanista</p>
-                    <p><strong>Trilha:</strong> Magia das Sombras</p>
+                                        <div class="hp-container">
+                        <span class="hp-label">HP:</span>
+                        <div class="hp-bar">
+                            <div class="hp-fill" style="width: 100%;">
+                                <span class="hp-value">17/17</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p><strong>Legado:</strong> Gnomo</p>
+
+                    <p><strong>Classe:</strong> Especialista</p>
+                    <p><strong>Trilha:</strong> Cavaleiro Toptero</p>
                 </div>
 
                 <div class="player-stats">
-                    <span class="stat">INT 18 (+4)</span>
-                    <span class="stat">DES 14 (+2)</span>
-                    <span class="stat">SAB 16 (+3)</span>
-                    <span class="stat">CAR 12 (+1)</span>
-                    <span class="stat">CON 10 (+0)</span>
-                    <span class="stat">FOR 8 (-1)</span>
+                    <span class="stat">FOR 13 (+1)</span>
+                    <span class="stat">DES 16 (+3)</span>
+                    <span class="stat">CON 16 (+3)</span>
+                    <span class="stat">INT 16 (+3)</span>
+                    <span class="stat">SAB 12 (+1)</span>
+                    <span class="stat">CAR 07 (-2)</span>
                 </div>
             </div>
+        </div>
 
-            <!-- Card 4 - Novo card com placeholder -->
+        <!-- Segunda linha com 2 jogadores -->
+        <div class="players-grid-bottom">
+            <!-- Card 4 - Thornir -->
             <div class="player-card">
                 <img src="https://placehold.co/150x150/8b5a2b/ffffff?text=Thornir" alt="Thornir" class="player-avatar">
                 <h2 class="player-name">Thornir</h2>
                 <div class="player-class">O Guardião</div>
 
                 <div class="player-description">
+                    <div class="hp-container">
+                        <span class="hp-label">HP:</span>
+                        <div class="hp-bar">
+                            <div class="hp-fill" style="width: 100%;">
+                                <span class="hp-value">20/20</span>
+                            </div>
+                        </div>
+                    </div>
                     <p><strong>Legado:</strong> Anão</p>
+
                     <p><strong>Classe:</strong> Paladino</p>
                     <p><strong>Trilha:</strong> Juramento Ancião</p>
                 </div>
@@ -121,14 +253,23 @@
                 </div>
             </div>
 
-            <!-- Card 5 - Novo card com placeholder -->
+            <!-- Card 5 - Lyra -->
             <div class="player-card">
                 <img src="https://placehold.co/150x150/8b5a2b/ffffff?text=Lyra" alt="Lyra" class="player-avatar">
                 <h2 class="player-name">Lyra</h2>
                 <div class="player-class">A Druida da Floresta</div>
 
                 <div class="player-description">
+                    <div class="hp-container">
+                        <span class="hp-label">HP:</span>
+                        <div class="hp-bar">
+                            <div class="hp-fill" style="width: 100%;">
+                                <span class="hp-value">18/18</span>
+                            </div>
+                        </div>
+                    </div>
                     <p><strong>Legado:</strong> Elfa Silvestre</p>
+
                     <p><strong>Classe:</strong> Druida</p>
                     <p><strong>Trilha:</strong> Círculo da Lua</p>
                 </div>
